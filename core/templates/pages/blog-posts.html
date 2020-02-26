@@ -19,154 +19,48 @@
                 </div>
                 <!-- End Page Header -->
                 <div class="row">
-                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                {% for i in ad %}
+                
+              
+                  <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     <div class="card card-small card-post card-post--1">
-                      <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/coffee.jpg');">
+                    <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/wheat.jpg');">
                         <a href="#" class="card-post__category badge badge-pill badge-dark">किसान </a>
-                        <div class="card-post__author d-flex">
-                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/0.jpg');">Written by Anna Kunis</a>
+                        <div class="card-post__author d-flex-inline">
+                          <a class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/0.jpg');">Written by Anna Kunis</a>
                         </div>
                       </div>
                       <div class="card-body">
+                        
                         <h5 class="card-title">
-                          <a class="text-fiord-blue" href="#">कॉफ़ी के बीज</a>
+                          <a class="text-fiord-blue" href="#" style="color:blue;font-weight: bolder;font-size: larger;">{{i.item_name}}</a>
                         </h5>
-                        <p class="card-text d-inline-block mb-3">रोबस्टा कॉफ़ी बीन्स , 25 किलो , फसल के बारे में</p>
-                        <!-- <span class="text-muted">28 February 2019</span> -->
+                        <p class="card-text d-inline-block mb-3">
+                         <ul style="color:darkgreen;font-weight: bolder;">
+                         <li> Username :- {{i.user}}</li>
+                        
+                         <li> Details :- {{i.description}}</li>
+                         <li> Quantity (in kg) :- {{i.quantity}}</li>
+                         <li> Cost per kg :- {{i.cost}}rs</li>
+                         <li> Status :- {{i.status}}</li>
+                         <li> Category :- For {{i.category}}</li>
+                       
+                        </ul>
+                         
+                          
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card card-small card-post card-post--1">
-                      <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/wheat.jpg');">
-                        <a href="#" class="card-post__category badge badge-pill badge-info">आपूर्तिकर्ता
-                        </a>
-                        <div class="card-post__author d-flex">
-                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/1.jpg');">Written by James Jamerson</a>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          <a class="text-fiord-blue" href="#">गेहूँ</a>
-                        </h5>
-                        <p class="card-text d-inline-block mb-3">शरबती  गेहूँ ,100 किलो, फसल के बारे में </p>
-                        <!-- <span class="text-muted">29 February 2019</span> -->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card card-small card-post card-post--1">
-                      <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/sugarcane.jpg');">
-                        <a href="#" class="card-post__category badge badge-pill badge-primary">किसान</a>
-                        <div class="card-post__author d-flex">
-                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/2.jpg');">Written by Jimmy Jackson</a>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          <a class="text-fiord-blue" href="#">गन्ना</a>
-                        </h5>
-                        <p class="card-text d-inline-block mb-3">राजभोग, 100 किलो,फसल के बारे में</p>
-                        <!-- <span class="text-muted">29 February 2019</span> -->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card card-small card-post card-post--1">
-                      <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/rice.jpg');">
-                        <a href="#" class="card-post__category badge badge-pill badge-warning">आपूर्तिकर्ता
-                        </a>
-                        <div class="card-post__author d-flex">
-                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/3.jpg');">Written by John James</a>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          <a class="text-fiord-blue" href="#">चावल</a>
-                        </h5>
-                        <p class="card-text d-inline-block mb-3">बासमती ,100 किलो, फसल के बारे में .</p>
-                        <!-- <span class="text-muted">29 February 2019</span> -->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card card-small card-post card-post--1">
-                      <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/rice.jpg');">
-                        <a href="#" class="card-post__category badge badge-pill badge-warning">आपूर्तिकर्ता
-                        </a>
-                        <div class="card-post__author d-flex">
-                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/3.jpg');">Written by John James</a>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          <a class="text-fiord-blue" href="#">चावल</a>
-                        </h5>
-                        <p class="card-text d-inline-block mb-3">बासमती ,100 किलो, फसल के बारे में .</p>
-                        <!-- <span class="text-muted">29 February 2019</span> -->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card card-small card-post card-post--1">
-                      <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/sugarcane.jpg');">
-                        <a href="#" class="card-post__category badge badge-pill badge-primary">किसान</a>
-                        <div class="card-post__author d-flex">
-                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/2.jpg');">Written by Jimmy Jackson</a>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          <a class="text-fiord-blue" href="#">गन्ना</a>
-                        </h5>
-                        <p class="card-text d-inline-block mb-3">राजभोग, 100 किलो,फसल के बारे में</p>
-                        <!-- <span class="text-muted">29 February 2019</span> -->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card card-small card-post card-post--1">
-                      <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/wheat.jpg');">
-                        <a href="#" class="card-post__category badge badge-pill badge-info">किसान</a>
-                        <div class="card-post__author d-flex">
-                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/1.jpg');">Written by James Jamerson</a>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          <a class="text-fiord-blue" href="#">गेहूँ</a>
-                        </h5>
-                        <p class="card-text d-inline-block mb-3">शरबती  गेहूँ ,100 किलो, फसल के बारे में </p>
-                        <!-- <span class="text-muted">29 February 2019</span> -->
-                      </div>
-                    </div>
-                  </div>
-                  
+                
 
-                  <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card card-small card-post card-post--1">
-                      <div class="card-post__image" style="background-image: url('/static/assets/img/content-management/coffee.jpg');">
-                        <a href="#" class="card-post__category badge badge-pill badge-dark">आपूर्तिकर्ता</a>
-                        <div class="card-post__author d-flex">
-                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/static/assets/img/avatars/0.jpg');">Written by Anna Kunis</a>
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          <a class="text-fiord-blue" href="#">कॉफ़ी के बीज</a>
-                        </h5>
-                        <p class="card-text d-inline-block mb-3">रोबस्टा कॉफ़ी बीन्स , 25 किलो , फसल के बारे में</p>
-                        <!-- <span class="text-muted">28 February 2019</span> -->
-                      </div>
-                    </div>
-                  </div>
+                 
+
                   
-                </div>
                
                 
-            </div>
+               {% endfor %}
+                
+              </div>
     
     
 {% endblock content %}

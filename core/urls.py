@@ -10,4 +10,4 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url("", include(('authentication.urls', 'authentication'), namespace="authentication")), # add this
     url("", include(('app.urls', 'app'), namespace="app")), # add this
-]
+] 

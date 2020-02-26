@@ -12,8 +12,7 @@ from .models import Advertisement,UserProfile
 from .forms import UserProfileForm
 
 def ads_list(request):
-    print("hey")
-    return render(request,'pages/blog-posts.html')
+    return redirect('app:home')
 
 def starting_page(request):
     return render(request,"Landing-page/index.html")
@@ -30,38 +29,45 @@ def ad(request):
         cost = request.POST.get('cost')
         category = request.POST.get('category')
         Advertisement.objects.create(image = image,item_name = item_name,description = description,quantity = quantity,cost = cost, category = category,user = request.user)
-        
         return redirect('app:home')
     else:
         return render(request,"pages/new-post.html")
 
-@login_required(login_url="{%url 'authentication:login%}")
+@login_required(login_url="{%url 'authentication:login'%}")
 def home(request):
-    return render(request, "pages/blog-posts.html")
+    ad = Advertisement.objects.all()
+    for i in ad:
+        print(i.image)
+    args ={
+        'ad':ad,
+    }
+    return render(request, "pages/blog-posts.html", args)
 
 def profile(request):
-    userprofile,created = UserProfile.objects.get_or_create(user = request.user,username = request.user.username)
-    if created:
-        userprofile.save()
+    userprofile,created = UserProfile.objects.get_or_create(user = request.user)
+   
     if request.method == 'POST':
-        
-        form = UserProfileForm(request.POST, request.FILES,instance = userprofile)
-       
-        if form.is_valid():
-            form.save()
-            user = request.user
-            user.username = request.POST.get('username')
-            user.email = request.POST.get('email')
-            user.save()
-           
+      
+        user_profile = UserProfileForm(request.POST, request.FILES,instance = userprofile)
+        if user_profile.is_valid():
+            user_profile.save()
             return redirect('app:home')
     
         else:
-            return redirect('App1:profile')
+            return redirect('app:profile')
 
     else:
         profile_form = UserProfileForm(instance = userprofile)
-        return render(request, 'pages/user-profile.html', {'form':profile_form,'userprofile':userprofile})
+        return render(request, 'pages/user-profile.html', {'form':profile_form, 'user':request.user})
+
+
+
+
+
+
+
+
+
 
 
 @login_required(login_url="{%url 'authentication:login%}")

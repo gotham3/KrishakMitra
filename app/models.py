@@ -16,6 +16,7 @@ class UserProfile(models.Model):
     zip = models.IntegerField(null = True)
     state = models.CharField(max_length = 200)
     img = models.ImageField(upload_to = 'display_picture',blank = True)
+   
 
 class Advertisement(models.Model):
     category_CHOICES =( 

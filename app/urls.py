@@ -15,6 +15,8 @@ urlpatterns = [
     url('home/', views.home, name='home'),
     url('ads/',views.ads_list,name="ads_list"),
     url('complaint/',views.complaint_view,name = "complaint"),
+    url('billing/(?P<pk>\d+)/', views.billing, name = "billing"),
     url('',views.starting_page,name = "starting_page"),
+    
     
 ]

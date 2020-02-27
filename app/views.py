@@ -27,20 +27,45 @@ def ad(request):
         description = request.POST.get('description')
         quantity = request.POST.get('quantity')
         cost = request.POST.get('cost')
+        status = request.POST.get('status')
+        contact = request.POST.get('contact')
         category = request.POST.get('category')
-        Advertisement.objects.create(image = image,item_name = item_name,description = description,quantity = quantity,cost = cost, category = category,user = request.user)
+        city =request.POST.get('city')
+        Advertisement.objects.create(city = city, contact_number = contact, image = image, status = status,item_name = item_name,description = description,quantity = quantity,cost = cost, category = category,user = request.user)
         return redirect('app:home')
     else:
         return render(request,"pages/new-post.html")
 
 @login_required(login_url="{%url 'authentication:login'%}")
 def home(request):
+    if request.method == "POST":
+        item = request.POST.get('item')
+        city = request.POST.get('city')
+        if item and city:
+            ad = Advertisement.objects.all().filter(item_name = item, city = city)
+            args ={
+                'ad':ad,
+            }
+            return render(request, "pages/blog-posts.html", args)
+        
+        if city:
+            ad = Advertisement.objects.all().filter(city = city)
+            args ={
+                'ad':ad,
+            }
+            return render(request, "pages/blog-posts.html", args)
+
+        if item:
+            ad = Advertisement.objects.all().filter(item_name = item)
+            args ={
+                'ad':ad,
+            }
+            return render(request, "pages/blog-posts.html", args)
+        
     ad = Advertisement.objects.all()
-    for i in ad:
-        print(i.image)
     args ={
         'ad':ad,
-    }
+            }
     return render(request, "pages/blog-posts.html", args)
 
 def profile(request):
@@ -61,15 +86,6 @@ def profile(request):
         return render(request, 'pages/user-profile.html', {'form':profile_form, 'user':request.user})
 
 
-
-
-
-
-
-
-
-
-
 @login_required(login_url="{%url 'authentication:login%}")
 def pages(request):
     context = {}
@@ -86,3 +102,25 @@ def pages(request):
         template = loader.get_template( 'pages/error-404.html' )
         return HttpResponse(template.render(context, request))
 
+def billing(request, pk):
+    adver = Advertisement.objects.get(pk = pk)
+    value = adver.quantity
+    if request.method == 'POST':
+        z = request.POST.get('data')
+        z = int(z)
+        if value >= z:
+            c = value - z
+            if c > 0:
+                adver.quantity = c
+                adver.save()
+                return redirect('app:home')
+            else:
+                adver.delete()
+                return redirect('app:home')
+        else:
+
+            return redirect('app:home')
+
+    
+    else:
+        return render(request, 'pages/billing.html')

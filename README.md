@@ -3,9 +3,8 @@
 
 ```bash
 $ # Get the code
-$ git clone https://github.com/app-generator/django-dashboard-shards.git
-$ cd django-dashboard-shards
-$
+$ git clone https://github.com/gotham3/KrishakMitra.git
+$ cd KrishakMitra
 $ # Virtualenv modules installation (Unix based systems)
 $ virtualenv --no-site-packages env
 $ source env/bin/activate
